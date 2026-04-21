@@ -131,25 +131,6 @@ $ redis-cli publish news "Breaking: Server is Live!"
 
 ---
 
-## Project Structure
-
-```
-.
-├── app/
-│   ├── __init__.py
-│   ├── main.py        # Entry point. Handles TCP connections & threading.
-│   ├── pubsub.py      # Pub/Sub logic. Manages channel subscriptions.
-│   ├── resp.py        # Protocol parsing. Decodes/Encodes byte streams.
-│   └── store.py       # Thread-safe Key-Value storage implementation.
-├── tests/
-│   └── test_server.py # End-to-end integration tests.
-├── .gitignore
-├── LICENSE
-└── README.md
-```
-
----
-
 ## Testing
 
 Access the comprehensive test suite to verify concurrent handling and protocol compliance.
@@ -171,18 +152,3 @@ All tests passed!
 ```
 
 ---
-
-## Performance & Scalability
-
-- **Throughput**: Capable of handling 10k+ requests per second on standard hardware due to efficient string parsing and minimal locking.
-- **Concurrency**: Tested with 50+ concurrent clients.
-- **Bottlenecks**: The Global Interpreter Lock (GIL) limits CPU scaling for a single process.
-- **Future Improvements**:
-    - Migrate to `asyncio` for higher concurrency (C10k problem).
-    - Implement RDB persistence to save data to disk.
-
----
-
-## Contributing
-
-Feel free to fork this project and experiment with your own improvements.
