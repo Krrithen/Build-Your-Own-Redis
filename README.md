@@ -2,7 +2,7 @@
 
 A concurrent, in-memory key-value store engineered from scratch in Python using raw TCP sockets and multithreading. This system implements the core functionality of Redis (including the Redis Serialization Protocol - RESP) to serve as a robust backend for caching, session management, and real-time Pub/Sub messaging.
 
-## 🚀 System Overview & Benchmarks
+## System Overview & Benchmarks
 
 This project bypasses high-level web frameworks to interact directly with the OS networking stack. It demonstrates low-level systems programming, custom network protocol parsing, and thread-safe memory management.
 
@@ -10,7 +10,7 @@ This project bypasses high-level web frameworks to interact directly with the OS
 * **Latency:** Optimized byte-stream parsing and lock management reduced average read/write latency by **18%**.
 * **Reliability:** Built a resilient RESP parser that gracefully handles network fragmentation, partial TCP reads, and malformed packets without crashing the server.
 
-## 🧠 Engineering Decisions & Trade-offs
+## Engineering Decisions & Trade-offs
 
 * **Concurrency Model (Thread-per-Connection vs. Async Event Loop):** Selected a Thread-per-Connection model for client handling. While Python's Global Interpreter Lock (GIL) prevents true parallel execution of CPU-bound bytecodes, this architecture effectively masks network I/O latency. When one thread blocks waiting for a TCP socket read/write, the OS context-switches to another thread, allowing high concurrency for I/O-heavy database workloads.
 
